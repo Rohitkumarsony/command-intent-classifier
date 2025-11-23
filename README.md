@@ -57,6 +57,13 @@ Training configuration:
 
 FINE-TUNING THE MODEL
 ----------------------------------------
+
+## REQUIREMENTS
+Install dependencies using:
+```
+pip install -r requirements.txt
+```
+----------------------------------------
 To start training:
 
 1. Make sure your dataset is inside commands.txt
@@ -83,13 +90,6 @@ Example:
 Input: "How do I check disk usage?"
 Output: "intent: disk_usage"
 
-
-REQUIREMENTS
-----------------------------------------
-Install dependencies using:
-```
-pip install -r requirements.txt
-```
 
 FOLDER DESCRIPTIONS
 ----------------------------------------
