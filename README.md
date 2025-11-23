@@ -54,16 +54,14 @@ Training configuration:
 • Epochs: 3
 • Save strategy: per epoch
 
-
-FINE-TUNING THE MODEL
-----------------------------------------
-
 ## REQUIREMENTS
 Install dependencies using:
 ```
 pip install -r requirements.txt
 ```
+FINE-TUNING THE MODEL
 ----------------------------------------
+
 To start training:
 
 1. Make sure your dataset is inside commands.txt
