@@ -1,5 +1,4 @@
 ## COMMAND INTENT CLASSIFIER
-========================================
 
 PROJECT OVERVIEW
 ----------------------------------------
@@ -94,7 +93,7 @@ pip install -r requirements.txt
 
 FOLDER DESCRIPTIONS
 ----------------------------------------
-commands.txt
+commands.jsonl
     Contains your training data in prompt + completion format.
 
 inference.py
