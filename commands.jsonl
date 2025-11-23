@@ -1,0 +1,68 @@
+{"prompt": "Create a new directory.", "completion": "mkdir <directory_name>"}
+{"prompt": "Remove a directory and all its contents.", "completion": "rm -r <directory_name>"}
+{"prompt": "List files and directories with detailed view.", "completion": "ls -la"}
+{"prompt": "Create an empty file.", "completion": "touch <file_name>"}
+{"prompt": "Copy a file or directory.", "completion": "cp <source> <destination>"}
+{"prompt": "Move or rename a file or directory.", "completion": "mv <source> <destination>"}
+{"prompt": "Remove an empty directory.", "completion": "rmdir <directory_name>"}
+{"prompt": "Find files or directories matching a pattern.", "completion": "find <path> -name <pattern>"}
+{"prompt": "Print the current working directory.", "completion": "pwd"}
+{"prompt": "Show files in a tree structure.", "completion": "tree"}
+{"prompt": "Display contents of a file.", "completion": "cat <file_name>"}
+{"prompt": "View file content page by page.", "completion": "less <file_name>"}
+{"prompt": "Show first few lines of a file.", "completion": "head -n <number> <file_name>"}
+{"prompt": "Show last few lines of a file.", "completion": "tail -n <number> <file_name>"}
+{"prompt": "Count lines, words, and characters in a file.", "completion": "wc <file_name>"}
+{"prompt": "Show file information.", "completion": "stat <file_name>"}
+{"prompt": "Compare two files line by line.", "completion": "diff <file1> <file2>"}
+{"prompt": "Sort lines in a file.", "completion": "sort <file_name>"}
+{"prompt": "Remove duplicate lines from a file.", "completion": "uniq <file_name>"}
+{"prompt": "Extract fields from text using a delimiter.", "completion": "cut -d <delimiter> -f <field>"}
+{"prompt": "Show disk space usage.", "completion": "df -h"}
+{"prompt": "Display size of a directory.", "completion": "du -sh <directory_name>"}
+{"prompt": "Show free and used memory.", "completion": "free -h"}
+{"prompt": "Show running processes.", "completion": "top"}
+{"prompt": "Use advanced process viewer.", "completion": "htop"}
+{"prompt": "Change file permissions.", "completion": "chmod <permissions> <file_name>"}
+{"prompt": "Change file owner and group.", "completion": "chown <user>:<group> <file_name>"}
+{"prompt": "Show or set file permission mask.", "completion": "umask"}
+{"prompt": "Check network connectivity.", "completion": "ping <hostname_or_ip>"}
+{"prompt": "Download files from a URL.", "completion": "wget <url>"}
+{"prompt": "Fetch data from a URL.", "completion": "curl <url>"}
+{"prompt": "Display network configuration.", "completion": "ifconfig"}
+{"prompt": "Show IP address details.", "completion": "ip addr"}
+{"prompt": "List open ports and services.", "completion": "netstat -tuln"}
+{"prompt": "Connect to a remote host using SSH.", "completion": "ssh <user>@<hostname>"}
+{"prompt": "Securely copy files to/from remote host.", "completion": "scp <source> <user>@<host>:<path>"}
+{"prompt": "Search for a pattern inside a file.", "completion": "grep <pattern> <file_name>"}
+{"prompt": "Process text and print fields.", "completion": "awk '{print $1}' <file_name>"}
+{"prompt": "Replace text in a file.", "completion": "sed 's/<old>/<new>/g' <file_name>"}
+{"prompt": "Search for files by name.", "completion": "find <path> -type f -name <name>"}
+{"prompt": "List all running processes.", "completion": "ps aux"}
+{"prompt": "Kill a process by ID.", "completion": "kill <process_id>"}
+{"prompt": "Kill a process by name.", "completion": "pkill <name>"}
+{"prompt": "List background jobs.", "completion": "jobs"}
+{"prompt": "Bring a job to the foreground.", "completion": "fg <job_id>"}
+{"prompt": "Resume a job in the background.", "completion": "bg <job_id>"}
+{"prompt": "Archive files using tar.", "completion": "tar -cvf <archive.tar> <files>"}
+{"prompt": "Extract a tar archive.", "completion": "tar -xvf <archive.tar>"}
+{"prompt": "Compress a file.", "completion": "gzip <file_name>"}
+{"prompt": "Decompress a gzip file.", "completion": "gunzip <file_name.gz>"}
+{"prompt": "Create a ZIP archive.", "completion": "zip <archive.zip> <files>"}
+{"prompt": "Extract a ZIP archive.", "completion": "unzip <archive.zip>"}
+{"prompt": "Show system information.", "completion": "uname -a"}
+{"prompt": "Show system uptime.", "completion": "uptime"}
+{"prompt": "Show current user.", "completion": "whoami"}
+{"prompt": "Show or set system date.", "completion": "date"}
+{"prompt": "Show or set hostname.", "completion": "hostname"}
+{"prompt": "Update package lists.", "completion": "apt update"}
+{"prompt": "Upgrade installed packages.", "completion": "apt upgrade"}
+{"prompt": "Install a package.", "completion": "apt install <package>"}
+{"prompt": "Remove a package.", "completion": "apt remove <package>"}
+{"prompt": "Search for a package.", "completion": "apt search <package>"}
+{"prompt": "Initialize a new git repository.", "completion": "git init"}
+{"prompt": "Clone a git repository.", "completion": "git clone <repo_url>"}
+{"prompt": "Stage file changes for commit.", "completion": "git add <file_name>"}
+{"prompt": "Commit changes with a message.", "completion": "git commit -m \"<message>\""}
+{"prompt": "Push changes to repository.", "completion": "git push"}
+{"prompt": "Pull latest changes from repository.", "completion": "git pull"}
