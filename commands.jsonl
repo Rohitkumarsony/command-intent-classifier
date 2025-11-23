@@ -1,68 +1,531 @@
-{"prompt": "Create a new directory.", "completion": "mkdir <directory_name>"}
-{"prompt": "Remove a directory and all its contents.", "completion": "rm -r <directory_name>"}
-{"prompt": "List files and directories with detailed view.", "completion": "ls -la"}
-{"prompt": "Create an empty file.", "completion": "touch <file_name>"}
-{"prompt": "Copy a file or directory.", "completion": "cp <source> <destination>"}
-{"prompt": "Move or rename a file or directory.", "completion": "mv <source> <destination>"}
-{"prompt": "Remove an empty directory.", "completion": "rmdir <directory_name>"}
-{"prompt": "Find files or directories matching a pattern.", "completion": "find <path> -name <pattern>"}
-{"prompt": "Print the current working directory.", "completion": "pwd"}
-{"prompt": "Show files in a tree structure.", "completion": "tree"}
-{"prompt": "Display contents of a file.", "completion": "cat <file_name>"}
-{"prompt": "View file content page by page.", "completion": "less <file_name>"}
-{"prompt": "Show first few lines of a file.", "completion": "head -n <number> <file_name>"}
-{"prompt": "Show last few lines of a file.", "completion": "tail -n <number> <file_name>"}
-{"prompt": "Count lines, words, and characters in a file.", "completion": "wc <file_name>"}
-{"prompt": "Show file information.", "completion": "stat <file_name>"}
-{"prompt": "Compare two files line by line.", "completion": "diff <file1> <file2>"}
-{"prompt": "Sort lines in a file.", "completion": "sort <file_name>"}
-{"prompt": "Remove duplicate lines from a file.", "completion": "uniq <file_name>"}
-{"prompt": "Extract fields from text using a delimiter.", "completion": "cut -d <delimiter> -f <field>"}
-{"prompt": "Show disk space usage.", "completion": "df -h"}
-{"prompt": "Display size of a directory.", "completion": "du -sh <directory_name>"}
-{"prompt": "Show free and used memory.", "completion": "free -h"}
-{"prompt": "Show running processes.", "completion": "top"}
-{"prompt": "Use advanced process viewer.", "completion": "htop"}
-{"prompt": "Change file permissions.", "completion": "chmod <permissions> <file_name>"}
-{"prompt": "Change file owner and group.", "completion": "chown <user>:<group> <file_name>"}
-{"prompt": "Show or set file permission mask.", "completion": "umask"}
-{"prompt": "Check network connectivity.", "completion": "ping <hostname_or_ip>"}
-{"prompt": "Download files from a URL.", "completion": "wget <url>"}
-{"prompt": "Fetch data from a URL.", "completion": "curl <url>"}
-{"prompt": "Display network configuration.", "completion": "ifconfig"}
-{"prompt": "Show IP address details.", "completion": "ip addr"}
-{"prompt": "List open ports and services.", "completion": "netstat -tuln"}
-{"prompt": "Connect to a remote host using SSH.", "completion": "ssh <user>@<hostname>"}
-{"prompt": "Securely copy files to/from remote host.", "completion": "scp <source> <user>@<host>:<path>"}
-{"prompt": "Search for a pattern inside a file.", "completion": "grep <pattern> <file_name>"}
-{"prompt": "Process text and print fields.", "completion": "awk '{print $1}' <file_name>"}
-{"prompt": "Replace text in a file.", "completion": "sed 's/<old>/<new>/g' <file_name>"}
-{"prompt": "Search for files by name.", "completion": "find <path> -type f -name <name>"}
-{"prompt": "List all running processes.", "completion": "ps aux"}
-{"prompt": "Kill a process by ID.", "completion": "kill <process_id>"}
-{"prompt": "Kill a process by name.", "completion": "pkill <name>"}
-{"prompt": "List background jobs.", "completion": "jobs"}
-{"prompt": "Bring a job to the foreground.", "completion": "fg <job_id>"}
-{"prompt": "Resume a job in the background.", "completion": "bg <job_id>"}
-{"prompt": "Archive files using tar.", "completion": "tar -cvf <archive.tar> <files>"}
-{"prompt": "Extract a tar archive.", "completion": "tar -xvf <archive.tar>"}
-{"prompt": "Compress a file.", "completion": "gzip <file_name>"}
-{"prompt": "Decompress a gzip file.", "completion": "gunzip <file_name.gz>"}
-{"prompt": "Create a ZIP archive.", "completion": "zip <archive.zip> <files>"}
-{"prompt": "Extract a ZIP archive.", "completion": "unzip <archive.zip>"}
-{"prompt": "Show system information.", "completion": "uname -a"}
-{"prompt": "Show system uptime.", "completion": "uptime"}
-{"prompt": "Show current user.", "completion": "whoami"}
-{"prompt": "Show or set system date.", "completion": "date"}
-{"prompt": "Show or set hostname.", "completion": "hostname"}
-{"prompt": "Update package lists.", "completion": "apt update"}
-{"prompt": "Upgrade installed packages.", "completion": "apt upgrade"}
-{"prompt": "Install a package.", "completion": "apt install <package>"}
-{"prompt": "Remove a package.", "completion": "apt remove <package>"}
-{"prompt": "Search for a package.", "completion": "apt search <package>"}
-{"prompt": "Initialize a new git repository.", "completion": "git init"}
-{"prompt": "Clone a git repository.", "completion": "git clone <repo_url>"}
-{"prompt": "Stage file changes for commit.", "completion": "git add <file_name>"}
-{"prompt": "Commit changes with a message.", "completion": "git commit -m \"<message>\""}
-{"prompt": "Push changes to repository.", "completion": "git push"}
-{"prompt": "Pull latest changes from repository.", "completion": "git pull"}
+{"prompt": "Change to the parent directory.", "completion": "cd .."}
+{"prompt": "Go to the home directory.", "completion": "cd ~"}
+{"prompt": "Go to the root directory.", "completion": "cd /"}
+{"prompt": "Change to a directory with spaces in name.", "completion": "cd \"My Folder\""}
+{"prompt": "List only directories.", "completion": "ls -d */"}
+{"prompt": "List files sorted by size.", "completion": "ls -lS"}
+{"prompt": "List files sorted by modification time (newest first).", "completion": "ls -lt"}
+{"prompt": "Show hidden files only.", "completion": "ls -a | grep '^\\.'"}
+{"prompt": "Create multiple directories at once.", "completion": "mkdir -p /path/to/nested/dir"}
+{"prompt": "Copy directory recursively.", "completion": "cp -r <source_dir> <dest_dir>"}
+{"prompt": "Copy and preserve permissions and timestamps.", "completion": "cp -p <source> <dest>"}
+{"prompt": "Move multiple files to a directory.", "completion": "mv file1 file2 file3 /target/dir/"}
+{"prompt": "Rename a file extension for all files in directory.", "completion": "for f in *.txt; do mv \"$f\" \"${f%.txt}.bak\"; done"}
+{"prompt": "Remove all files in current directory (dangerous).", "completion": "rm -f *"}
+{"prompt": "Remove directory and everything inside forcefully.", "completion": "rm -rf <directory>"}
+{"prompt": "Find all empty directories.", "completion": "find . -type d -empty"}
+{"prompt": "Find files larger than 100MB.", "completion": "find / -type f -size +100M"}
+{"prompt": "Find files modified in the last 7 days.", "completion": "find . -mtime -7"}
+{"prompt": "Find and delete files older than 30 days.", "completion": "find /path -mtime +30 -delete"}
+{"prompt": "Search for text in files recursively.", "completion": "grep -r \"search term\" /path"}
+{"prompt": "Search case-insensitively.", "completion": "grep -i \"pattern\" file.txt"}
+{"prompt": "Show line numbers with grep matches.", "completion": "grep -n \"pattern\" file.txt"}
+{"prompt": "Show only matching part of lines.", "completion": "grep -o \"pattern\" file.txt"}
+{"prompt": "Count occurrences of a string.", "completion": "grep -c \"string\" file.txt"}
+{"prompt": "Follow (tail) a log file in real time.", "completion": "tail -f /var/log/syslog"}
+{"prompt": "Show last 50 lines of a file.", "completion": "tail -n 50 logfile.log"}
+{"prompt": "Monitor file changes and show new lines.", "completion": "tail -f access.log"}
+{"prompt": "Display disk usage of current directory (human readable).", "completion": "du -sh ."}
+{"prompt": "Show top 10 largest directories.", "completion": "du -h . | sort -hr | head -10"}
+{"prompt": "Check which process is using a port (e.g., 8080).", "completion": "lsof -i :8080"}
+{"prompt": "Kill all processes by name.", "completion": "pkill -f process_name"}
+{"prompt": "Kill process forcefully.", "completion": "kill -9 <pid>"}
+{"prompt": "Run command in background.", "completion": "command &"}
+{"prompt": "Run command and disown it.", "completion": "command & disown"}
+{"prompt": "Bring most recent background job to foreground.", "completion": "fg"}
+{"prompt": "List all background jobs with PIDs.", "completion": "jobs -l"}
+{"prompt": "Create a symbolic link.", "completion": "ln -s /path/to/file linkname"}
+{"prompt": "Create a hard link.", "completion": "ln /path/to/file hardlink"}
+{"prompt": "Watch a command output every 2 seconds.", "completion": "watch -n 2 'command'"}
+{"prompt": "Show real-time network usage.", "completion": "watch -n 1 cat /proc/net/dev"}
+{"prompt": "Display routing table.", "completion": "ip route"}
+{"prompt": "Trace network route to a host.", "completion": "traceroute google.com"}
+{"prompt": "Show active internet connections.", "completion": "ss -tuln"}
+{"prompt": "Download a website recursively.", "completion": "wget -r -k -p https://example.com"}
+{"prompt": "Download with resume support.", "completion": "wget -c https://url.to/file"}
+{"prompt": "Send POST request with curl.", "completion": "curl -X POST -d 'key=value' https://api.example.com"}
+{"prompt": "Download file with original filename using curl.", "completion": "curl -O https://example.com/file.zip"}
+{"prompt": "Show SSL certificate of a website.", "completion": "openssl s_client -connect example.com:443 -showcerts"}
+{"prompt": "Extract domain from URL.", "completion": "echo \"https://example.com/path\" | awk -F[/:] '{print $4}'"}
+{"prompt": "Replace all occurrences of word in a file.", "completion": "sed -i 's/oldword/newword/g' filename"}
+{"prompt": "Delete lines containing a pattern.", "completion": "sed '/pattern/d' file.txt"}
+{"prompt": "Print columns 2 and 3 from a CSV.", "completion": "awk -F',' '{print $2,$3}' file.csv"}
+{"prompt": "Sum numbers in a column.", "completion": "awk '{sum += $1} END {print sum}' numbers.txt"}
+{"prompt": "Compress directory into tar.gz.", "completion": "tar -czvf archive.tar.gz /path/to/dir"}
+{"prompt": "List contents of tar archive.", "completion": "tar -tvf archive.tar"}
+{"prompt": "Extract specific file from tar.", "completion": "tar -xvf archive.tar path/inside/file.txt"}
+{"prompt": "Create password-protected zip.", "completion": "zip -e archive.zip files/*"}
+{"prompt": "Show current shell.", "completion": "echo $SHELL"}
+{"prompt": "List all environment variables.", "completion": "printenv"}
+{"prompt": "Set environment variable temporarily.", "completion": "export MYVAR=value"}
+{"prompt": "Add directory to PATH.", "completion": "export PATH=$PATH:/new/path"}
+{"prompt": "Show history of commands.", "completion": "history"}
+{"prompt": "Repeat last command starting with 'abc'.", "completion": "!abc"}
+{"prompt": "Clear terminal screen.", "completion": "clear"}
+{"prompt": "Reboot the system.", "completion": "sudo reboot"}
+{"prompt": "Shutdown the system immediately.", "completion": "sudo shutdown -h now"}
+{"prompt": "Schedule shutdown in 10 minutes.", "completion": "sudo shutdown -h +10"}
+{"prompt": "Show kernel messages.", "completion": "dmesg"}
+{"prompt": "Monitor kernel messages in real time.", "completion": "dmesg --follow"}
+{"prompt": "Show CPU information.", "completion": "lscpu"}
+{"prompt": "Show detailed hardware info.", "completion": "lshw"}
+{"prompt": "Show PCI devices.", "completion": "lspci"}
+{"prompt": "Show USB devices.", "completion": "lsusb"}
+{"prompt": "Mount an ISO file.", "completion": "sudo mount -o loop image.iso /mnt/iso"}
+{"prompt": "Unmount a filesystem.", "completion": "sudo umount /mnt"}
+{"prompt": "Show mounted filesystems.", "completion": "df -hT"}
+{"prompt": "Create a new user.", "completion": "sudo adduser newusername"}
+{"prompt": "Add user to sudo group.", "completion": "sudo usermod -aG sudo username"}
+{"prompt": "Change user password.", "completion": "sudo passwd username"}
+{"prompt": "Switch to another user.", "completion": "su - username"}
+{"prompt": "Run command as another user.", "completion": "sudo -u username command"}
+{"prompt": "Show users currently logged in.", "completion": "w"}
+{"prompt": "Show last logged in users.", "completion": "last"}
+{"prompt": "Create a cron job for current user.", "completion": "crontab -e"}
+{"prompt": "List cron jobs.", "completion": "crontab -l"}
+{"prompt": "Backup crontab.", "completion": "crontab -l > mycron.backup"}
+{"prompt": "Run script at system startup.", "completion": "@reboot /path/to/script.sh"}
+{"prompt": "Check service status (systemd).", "completion": "systemctl status nginx"}
+{"prompt": "Start a service.", "completion": "sudo systemctl start nginx"}
+{"prompt": "Enable service on boot.", "completion": "sudo systemctl enable nginx"}
+{"prompt": "View journal logs.", "completion": "journalctl"}
+{"prompt": "Follow logs in real time.", "completion": "journalctl -f"}
+{"prompt": "Show logs for specific service.", "completion": "journalctl -u nginx.service"}
+{"prompt": "Clear old logs (keep last 100MB).", "completion": "sudo journalctl --vacuum-size=100M"}
+{"prompt": "Generate SSH key pair.", "completion": "ssh-keygen -t ed25519"}
+{"prompt": "Copy SSH public key to remote host.", "completion": "ssh-copy-id user@host"}
+{"prompt": "SSH with specific port.", "completion": "ssh user@host -p 2222"}
+{"prompt": "Run remote command via SSH.", "completion": "ssh user@host 'uptime'"}
+{"prompt": "Sync directories with rsync.", "completion": "rsync -avz /local/path/ user@remote:/remote/path/"}
+{"prompt": "Dry-run rsync to see what would be transferred.", "completion": "rsync -avz --dry-run source/ dest/"}
+{"prompt": "Show progress during rsync.", "completion": "rsync -avz --progress source/ dest/"}
+{"prompt": "Compress and transfer with rsync.", "completion": "rsync -avz --compress source/ user@host:/dest/"}
+{"prompt": "Delete files that no longer exist on source.", "completion": "rsync -avz --delete source/ dest/"}
+{"prompt": "Create an alias.", "completion": "alias ll='ls -la'"}
+{"prompt": "Make alias permanent (add to ~/.bashrc).", "completion": "echo \"alias shortcut='command'\" >> ~/.bashrc"}
+{"prompt": "Reload bash configuration.", "completion": "source ~/.bashrc"}
+{"prompt": "Search command history.", "completion": "Ctrl+R"}
+{"prompt": "Repeat last command as sudo.", "completion": "sudo !!"}
+{"prompt": "Show file type.", "completion": "file filename"}
+{"prompt": "Convert text file from DOS to Unix.", "completion": "dos2unix file.txt"}
+{"prompt": "Convert line endings from Unix to DOS.", "completion": "unix2dos file.txt"}
+{"prompt": "Split large file into smaller parts.", "completion": "split -b 100M largefile part_"}
+{"prompt": "Join split files back.", "completion": "cat part_* > largefile"}
+{"prompt": "Count number of files in directory.", "completion": "ls -1 | wc -l"}
+{"prompt": "Find broken symbolic links.", "completion": "find . -type l ! -exec test -e {} \\; -print"}
+{"prompt": "Change file timestamp to now.", "completion": "touch -m filename"}
+{"prompt": "Create file with specific timestamp.", "completion": "touch -t 202501010000 filename"}
+{"prompt": "Make a file immutable (even root can't delete).", "completion": "sudo chattr +i important.txt"}
+{"prompt": "Remove immutable attribute.", "completion": "sudo chattr -i important.txt"}
+{"prompt": "List all installed packages (Debian/Ubuntu).", "completion": "dpkg -l"}
+{"prompt": "Show which package provides a file.", "completion": "dpkg -S /path/to/file"}
+{"prompt": "Remove package and configuration files.", "completion": "sudo apt purge package-name"}
+{"prompt": "Clean unused package cache.", "completion": "sudo apt autoclean"}
+{"prompt": "Fix broken dependencies.", "completion": "sudo apt install -f"}
+{"prompt": "Update all packages without prompting.", "completion": "sudo apt upgrade -y"}
+{"prompt": "Show package details.", "completion": "apt show package-name"}
+{"prompt": "List files installed by a package.", "completion": "dpkg -L package-name"}
+{"prompt": "Reconfigure a package.", "completion": "sudo dpkg-reconfigure package-name"}
+{"prompt": "Hold a package version (prevent upgrade).", "completion": "sudo apt-mark hold package-name"}
+{"prompt": "Unhold a package.", "completion": "sudo apt-mark unhold package-name"}
+{"prompt": "Add a PPA repository.", "completion": "sudo add-apt-repository ppa:user/ppa-name"}
+{"prompt": "Update after adding PPA.", "completion": "sudo apt update"}
+{"prompt": "Install .deb file.", "completion": "sudo dpkg -i package.deb"}
+{"prompt": "Check MD5 checksum of a file.", "completion": "md5sum filename"}
+{"prompt": "Verify file against checksum.", "completion": "md5sum -c checksum.md5"}
+{"prompt": "Generate SHA256 checksum.", "completion": "sha256sum filename > file.sha256"}
+{"prompt": "Create encrypted archive.", "completion": "tar -czf - files/ | openssl enc -aes-256-cbc -salt -out archive.tar.gz.enc"}
+{"prompt": "Decrypt encrypted archive.", "completion": "openssl enc -aes-256-cbc -d -in archive.tar.gz.enc | tar -xzf -"}
+{"prompt": "Burn ISO to USB drive.", "completion": "sudo dd if=image.iso of=/dev/sdX bs=4M status=progress"}
+{"prompt": "Create bootable USB from ISO.", "completion": "sudo dd if=ubuntu.iso of=/dev/sdb bs=4M conv=fdatasync"}
+{"prompt": "Monitor USB insertion.", "completion": "dmesg -w"}
+{"prompt": "Eject USB safely.", "completion": "sudo eject /dev/sdb"}
+{"prompt": "Format USB as FAT32.", "completion": "sudo mkfs.vfat -F 32 /dev/sdb1"}
+{"prompt": "Format drive as ext4.", "completion": "sudo mkfs.ext4 /dev/sda1"}
+{"prompt": "Check filesystem for errors.", "completion": "sudo fsck /dev/sda1"}
+{"prompt": "Resize ext4 filesystem.", "completion": "sudo resize2fs /dev/sda1"}
+{"prompt": "Create LVM physical volume.", "completion": "sudo pvcreate /dev/sdb"}
+{"prompt": "Create volume group.", "completion": "sudo vgcreate myvg /dev/sdb"}
+{"prompt": "Create logical volume.", "completion": "sudo lvcreate -L 50G -n mylv myvg"}
+{"prompt": "Show LVM status.", "completion": "lvs"}
+{"prompt": "Extend logical volume.", "completion": "sudo lvextend -L +20G /dev/myvg/mylv"}
+{"prompt": "Resize filesystem after extending LV.", "completion": "sudo resize2fs /dev/myvg/mylv"}
+{"prompt": "Create RAID array (mdadm).", "completion": "sudo mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sda /dev/sdb"}
+{"prompt": "Monitor RAID status.", "completion": "cat /proc/mdstat"}
+{"prompt": "Set terminal title.", "completion": "echo -ne \"\\033]0;My Title\\007\""}
+{"prompt": "Print colorful text in terminal.", "completion": "echo -e \"\\e[31mRed Text\\e[0m\""}
+{"prompt": "Play a beep sound.", "completion": "echo -e \"\\a\""}
+{"prompt": "Generate random password.", "completion": "< /dev/urandom tr -dc A-Za-z0-9 | head -c32; echo"}
+{"prompt": "List all open files by process.", "completion": "lsof"}
+{"prompt": "Show what files a process has open.", "completion": "lsof -p 1234"}
+{"prompt": "Find which process uses a file.", "completion": "fuser /path/to/file"}
+{"prompt": "Show real-time disk I/O.", "completion": "iotop"}
+{"prompt": "Show network connections by process.", "completion": "ss -ltnp"}
+{"prompt": "Capture packets with tcpdump.", "completion": "sudo tcpdump -i eth0 port 80"}
+{"prompt": "Save captured packets to file.", "completion": "sudo tcpdump -i any -w capture.pcap"}
+{"prompt": "Read pcap file.", "completion": "tcpdump -r capture.pcap"}
+{"prompt": "Test disk write speed.", "completion": "dd if=/dev/zero of=testfile bs=1G count=1 oflag=dsync"}
+{"prompt": "Test disk read speed.", "completion": "dd if=testfile of=/dev/null bs=1G"}
+{"prompt": "Benchmark disk with hdparm.", "completion": "sudo hdparm -Tt /dev/sda"}
+{"prompt": "Show temperature of hard drives.", "completion": "sudo hddtemp /dev/sd*"}
+{"prompt": "Show SMART status of drive.", "completion": "sudo smartctl -a /dev/sda"}
+{"prompt": "Run SMART self-test.", "completion": "sudo smartctl -t long /dev/sda"}
+{"prompt": "Create swap file of 4GB.", "completion": "sudo fallocate -l 4G /swapfile"}
+{"prompt": "Enable swap file.", "completion": "sudo mkswap /swapfile && sudo swapon /swapfile"}
+{"prompt": "Make swap permanent.", "completion": "echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab"}
+{"prompt": "Show swap usage.", "completion": "swapon --show"}
+{"prompt": "Change swappiness.", "completion": "sudo sysctl vm.swappiness=10"}
+{"prompt": "Set hostname permanently.", "completion": "sudo hostnamectl set-hostname newname"}
+{"prompt": "Update hosts file after hostname change.", "completion": "sudo nano /etc/hosts"}
+{"prompt": "Flush DNS cache (systemd-resolved).", "completion": "sudo systemd-resolve --flush-caches"}
+{"prompt": "Restart networking (Ubuntu).", "completion": "sudo systemctl restart NetworkManager"}
+{"prompt": "Show current timezone.", "completion": "timedatectl"}
+{"prompt": "Set timezone.", "completion": "sudo timedatectl set-timezone Europe/London"}
+{"prompt": "Sync time with NTP.", "completion": "sudo timedatectl set-ntp true"}
+{"prompt": "Install htop if not present.", "completion": "sudo apt install htop"}
+{"prompt": "Install tree command.", "completion": "sudo apt install tree"}
+{"prompt": "Install ncdu (disk usage analyzer).", "completion": "sudo apt install ncdu"}
+{"prompt": "Show battery status (laptop).", "completion": "upower -e | grep battery | xargs upower -i"}
+{"prompt": "Show Wi-Fi networks.", "completion": "nmcli device wifi list"}
+{"prompt": "Connect to Wi-Fi.", "completion": "nmcli device wifi connect SSID password PASSWORD"}
+{"prompt": "Show current Git branch.", "completion": "git rev-parse --abbrev-ref HEAD"}
+{"prompt": "Stash current changes.", "completion": "git stash"}
+{"prompt": "Apply latest stash.", "completion": "git stash pop"}
+{"prompt": "Create new branch and switch to it.", "completion": "git checkout -b new-branch"}
+{"prompt": "Delete local branch.", "completion": "git branch -d old-branch"}
+{"prompt": "Delete remote branch.", "completion": "git push origin --delete old-branch"}
+{"prompt": "Show Git status short format.", "completion": "git status -s"}
+{"prompt": "Show last commit.", "completion": "git log -1"}
+{"prompt": "Show commit history in one line.", "completion": "git log --oneline"}
+{"prompt": "Show changes not yet staged.", "completion": "git diff"}
+{"prompt": "Show staged changes.", "completion": "git diff --staged"}
+{"prompt": "Amend last commit message.", "completion": "git commit --amend"}
+{"prompt": "Interactive rebase last 3 commits.", "completion": "git rebase -i HEAD~3"}
+{"prompt": "Cherry-pick a commit.", "completion": "git cherry-pick <commit-hash>"}
+{"prompt": "Reset last commit but keep changes.", "completion": "git reset HEAD~1"}
+{"prompt": "Hard reset to specific commit.", "completion": "git reset --hard <commit>"}
+{"prompt": "Clean untracked files interactively.", "completion": "git clean -idx"}
+{"prompt": "Show remote repositories.", "completion": "git remote -v"}
+{"prompt": "Add new remote.", "completion": "git remote add origin https://github.com/user/repo.git"}
+{"prompt": "Change remote URL.", "completion": "git remote set-url origin new-url"}
+{"prompt": "Fetch all branches.", "completion": "git fetch --all"}
+{"prompt": "Pull with rebase.", "completion": "git pull --rebase"}
+{"prompt": "Create tag.", "completion": "git tag v1.0.0"}
+{"prompt": "Push all tags.", "completion": "git push --tags"}
+{"prompt": "Delete local tag.", "completion": "git tag -d v1.0.0"}
+{"prompt": "Delete remote tag.", "completion": "git push origin :refs/tags/v1.0.0"}
+{"prompt": "Show files ignored by Git.", "completion": "git status --ignored"}
+{"prompt": "Assume file unchanged (skip in diff).", "completion": "git update-index --assume-unchanged file.txt"}
+{"prompt": "Stop assuming unchanged.", "completion": "git update-index --no-assume-unchanged file.txt"}
+{"prompt": "Show large files in repo history.", "completion": "git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | awk '/^blob/ {print substr($0, index($0,$3))}' | sort --numeric-sort --key=2 | tail"}
+{"prompt": "Run garbage collection in Git.", "completion": "git gc --aggressive --prune=now"}
+{"prompt": "Show Git config.", "completion": "git config --list"}
+{"prompt": "Set global Git user name.", "completion": "git config --global user.name \"John Doe\""}
+{"prompt": "Set global Git email.", "completion": "git config --global user.email \"john@example.com\""}
+{"prompt": "Enable color in Git output.", "completion": "git config --global color.ui true"}
+{"prompt": "Set default editor to nano.", "completion": "git config --global core.editor nano"}
+{"prompt": "Set default push behavior.", "completion": "git config --global push.default simple"}
+{"prompt": "Ignore file permissions changes.", "completion": "git config core.fileMode false"}
+{"prompt": "Create shallow clone (faster).", "completion": "git clone --depth 1 https://repo.git"}
+{"prompt": "Convert shallow to full clone.", "completion": "git fetch --unshallow"}
+{"prompt": "Show current disk inodes usage.", "completion": "df -i"}
+{"prompt": "Find which directory has most inodes.", "completion": "find . -xdev -printf '%h\\n' | sort | uniq -c | sort -k 1 -n"}
+{"prompt": "Show top 20 memory-consuming processes.", "completion": "ps aux --sort=-%mem | head -20"}
+{"prompt": "Show top 20 CPU-consuming processes.", "completion": "ps aux --sort=-%cpu | head -20"}
+{"prompt": "Nice a running process.", "completion": "renice 10 -p <pid>"}
+{"prompt": "Set process priority (real-time).", "completion": "sudo chrt -r -p 50 <pid>"}
+{"prompt": "Limit process memory usage.", "completion": "ulimit -v 500000"}
+{"prompt": "Show current ulimits.", "completion": "ulimit -a"}
+{"prompt": "Create directory and cd into it.", "completion": "mkdir newdir && cd newdir"}
+{"prompt": "Go up two directories.", "completion": "cd ../.."}
+{"prompt": "Extract .tar.bz2 archive.", "completion": "tar -xjvf archive.tar.bz2"}
+{"prompt": "Extract .tar.xz archive.", "completion": "tar -xJvf archive.tar.xz"}
+{"prompt": "List all listening TCP ports.", "completion": "ss -ltn"}
+{"prompt": "List all listening UDP ports.", "completion": "ss -lun"}
+{"prompt": "Show established connections.", "completion": "ss -tn state established"}
+{"prompt": "Check if port 22 is open on remote host.", "completion": "nc -zv host 22"}
+{"prompt": "Simple HTTP server in current directory.", "completion": "python3 -m http.server 8000"}
+{"prompt": "Simple HTTP server with PHP support.", "completion": "php -S localhost:8000"}
+{"prompt": "Download entire website.", "completion": "wget --mirror --convert-links --page-requisites https://example.com"}
+{"prompt": "Block USB storage devices.", "completion": "echo 'install usb-storage /bin/true' | sudo tee /etc/modprobe.d/disable-usb-storage.conf"}
+{"prompt": "Show kernel modules.", "completion": "lsmod"}
+{"prompt": "Load a kernel module.", "completion": "sudo modprobe module_name"}
+{"prompt": "Unload a kernel module.", "completion": "sudo rmmod module_name"}
+{"prompt": "Show temperature sensors.", "completion": "sensors"}
+{"prompt": "Show fan speeds.", "completion": "sensors | grep fan"}
+{"prompt": "Create empty 1GB file.", "completion": "truncate -s 1G largefile"}
+{"prompt": "Mount Windows share.", "completion": "sudo mount -t cifs //server/share /mnt/point -o username=user"}
+{"prompt": "Create sparse file (appears large but uses little space).", "completion": "truncate -s 100G sparsefile"}
+{"prompt": "Show actual disk space used by sparse file.", "completion": "du -h --apparent-size sparsefile"}
+{"prompt": "Find duplicate files.", "completion": "find . ! -empty -type f -exec md5sum {} + | sort | uniq -w32 -d"}
+{"prompt": "Backup /etc directory.", "completion": "sudo tar -czvf etc-backup-$(date +%F).tar.gz /etc"}
+{"prompt": "Restore /etc from backup.", "completion": "sudo tar -xzvf etc-backup-2025-11-23.tar.gz -C /"}
+{"prompt": "Show all users in system.", "completion": "cut -d: -f1 /etc/passwd"}
+{"prompt": "Show all groups.", "completion": "cut -d: -f1 /etc/group"}
+{"prompt": "Add user to group.", "completion": "sudo usermod -aG groupname username"}
+{"prompt": "Create new group.", "completion": "sudo groupadd newgroup"}
+{"prompt": "Delete group.", "completion": "sudo groupdel groupname"}
+{"prompt": "Show current firewall rules (ufw).", "completion": "sudo ufw status verbose"}
+{"prompt": "Allow SSH in firewall.", "completion": "sudo ufw allow ssh"}
+{"prompt": "Allow port 8080.", "completion": "sudo ufw allow 8080/tcp"}
+{"prompt": "Delete firewall rule by number.", "completion": "sudo ufw delete 3"}
+{"prompt": "Enable ufw firewall.", "completion": "sudo ufw enable"}
+{"prompt": "Reload firewall rules.", "completion": "sudo ufw reload"}
+{"prompt": "Show iptables rules.", "completion": "sudo iptables -L -v -n"}
+{"prompt": "Save current iptables rules.", "completion": "sudo iptables-save > rules.backup"}
+{"prompt": "Restore iptables rules.", "completion": "sudo iptables-restore < rules.backup"}
+{"prompt": "Flush all iptables rules.", "completion": "sudo iptables -F"}
+{"prompt": "Set default policy to DROP.", "completion": "sudo iptables -P INPUT DROP"}
+{"prompt": "Allow established connections.", "completion": "sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT"}
+{"prompt": "Block an IP address.", "completion": "sudo iptables -A INPUT -s 192.168.1.100 -j DROP"}
+{"prompt": "Unblock an IP.", "completion": "sudo iptables -D INPUT -s 192.168.1.100 -j DROP"}
+{"prompt": "Show listening services with process.", "completion": "sudo netstat -tulnp"}
+{"prompt": "Show routing table (deprecated).", "completion": "netstat -rn"}
+{"prompt": "Show network statistics.", "completion": "netstat -s"}
+{"prompt": "Show active UNIX sockets.", "completion": "netstat -x"}
+{"prompt": "Test DNS resolution.", "completion": "dig example.com"}
+{"prompt": "Short DNS lookup.", "completion": "dig example.com +short"}
+{"prompt": "Reverse DNS lookup.", "completion": "dig -x 8.8.8.8"}
+{"prompt": "Query specific DNS server.", "completion": "dig @1.1.1.1 example.com"}
+{"prompt": "Show DNS records of all types.", "completion": "dig example.com ANY"}
+{"prompt": "Change file creation time.", "completion": "touch -t 202001010000 file.txt"}
+{"prompt": "Show only directories in long listing.", "completion": "ls -l | grep ^d"}
+{"prompt": "Show only files (not directories).", "completion": "ls -l | grep ^-"}
+{"prompt": "Recursively count lines of code (Python).", "completion": "find . -name '*.py' -exec cat {} \\; | wc -l"}
+{"prompt": "Find all .log files and compress them.", "completion": "find . -name \"*.log\" -exec gzip {} \\;"}
+{"prompt": "Replace spaces with underscores in filenames.", "completion": "for f in *\\ *; do mv \"$f\" \"${f// /_}\"; done"}
+{"prompt": "Convert all filenames to lowercase.", "completion": "for f in *; do mv \"$f\" \"$(echo $f | tr '[:upper:]' '[:lower:]')\"; done"}
+{"prompt": "Monitor changes to a directory.", "completion": "inotifywait -m -r /path/to/dir"}
+{"prompt": "Show progress while copying large file.", "completion": "rsync --progress largefile /dest/"}
+{"prompt": "Create animated GIF from images.", "completion": "convert -delay 20 -loop 0 img*.png animation.gif"}
+{"prompt": "Resize image to 50%.", "completion": "convert input.jpg -resize 50% output.jpg"}
+{"prompt": "Convert image to grayscale.", "completion": "convert input.jpg -colorspace Gray output.jpg"}
+{"prompt": "Take screenshot (full screen).", "completion": "scrot screenshot.png"}
+{"prompt": "Take screenshot of selected area.", "completion": "scrot -s screenshot.png"}
+{"prompt": "Record screen to video.", "completion": "ffmpeg -f x11grab -i :0.0 output.mp4"}
+{"prompt": "Convert video to GIF.", "completion": "ffmpeg -i input.mp4 -vf fps=10,scale=320:-1 output.gif"}
+{"prompt": "Extract audio from video.", "completion": "ffmpeg -i video.mp4 -vn audio.mp3"}
+{"prompt": "Show current runlevel.", "completion": "who -r"}
+{"prompt": "Change default boot target (systemd).", "completion": "sudo systemctl set-default multi-user.target"}
+{"prompt": "List all systemd services.", "completion": "systemctl list-units --type=service"}
+{"prompt": "Show failed services.", "completion": "systemctl --failed"}
+{"prompt": "Mask a service (prevent starting).", "completion": "sudo systemctl mask servicename.service"}
+{"prompt": "Unmask a service.", "completion": "sudo systemctl unmask servicename.service"}
+{"prompt": "Analyze boot performance.", "completion": "systemd-analyze"}
+{"prompt": "Show time spent in each boot step.", "completion": "systemd-analyze blame"}
+{"prompt": "Show critical chain.", "completion": "systemd-analyze critical-chain"}
+{"prompt": "Create new sudo user.", "completion": "sudo adduser newadmin && sudo usermod -aG sudo newadmin"}
+{"prompt": "Lock a user account.", "completion": "sudo passwd -l username"}
+{"prompt": "Unlock a user account.", "completion": "sudo passwd -u username"}
+{"prompt": "Show login history.", "completion": "last -a"}
+{"prompt": "Show failed login attempts.", "completion": "sudo cat /var/log/auth.log | grep Failed"}
+{"prompt": "Monitor SSH login attempts in real time.", "completion": "sudo tail -f /var/log/auth.log | grep sshd"}
+{"prompt": "Generate GPG key.", "completion": "gpg --full-generate-key"}
+{"prompt": "List GPG keys.", "completion": "gpg --list-keys"}
+{"prompt": "Encrypt file with GPG.", "completion": "gpg -e -r user@example.com file.txt"}
+{"prompt": "Decrypt file.", "completion": "gpg -d file.txt.gpg"}
+{"prompt": "Sign a file.", "completion": "gpg --sign file.txt"}
+{"prompt": "Verify signature.", "completion": "gpg --verify file.txt.sig file.txt"}
+{"prompt": "Create self-signed SSL certificate.", "completion": "openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes"}
+{"prompt": "Show SSL certificate details.", "completion": "openssl x509 -in cert.pem -text -noout"}
+{"prompt": "Test SSL connection.", "completion": "openssl s_client -connect example.com:443"}
+{"prompt": "Generate strong password.", "completion": "openssl rand -base64 32"}
+{"prompt": "Create directory with current date.", "completion": "mkdir $(date +%Y-%m-%d)"}
+{"prompt": "Show calendar.", "completion": "cal"}
+{"prompt": "Show calendar for specific month.", "completion": "cal 12 2025"}
+{"prompt": "Sleep for 10 seconds.", "completion": "sleep 10"}
+{"prompt": "Run command after delay.", "completion": "sleep 5m && command"}
+{"prompt": "Show current processes in tree view.", "completion": "pstree"}
+{"prompt": "Show process tree for specific PID.", "completion": "pstree -p 1234"}
+{"prompt": "Send signal to process.", "completion": "kill -SIGTERM <pid>"}
+{"prompt": "Suspend a process.", "completion": "kill -STOP <pid>"}
+{"prompt": "Resume suspended process.", "completion": "kill -CONT <pid>"}
+{"prompt": "Show nice values of processes.", "completion": "ps -eo pid,ni,comm"}
+{"prompt": "Show security context (SELinux).", "completion": "ls -Z"}
+{"prompt": "Show file context.", "completion": "ls -Z filename"}
+{"prompt": "Restore default SELinux context.", "completion": "restorecon -v filename"}
+{"prompt": "Show SELinux status.", "completion": "sestatus"}
+{"prompt": "Temporarily disable SELinux.", "completion": "sudo setenforce 0"}
+{"prompt": "Enable SELinux.", "completion": "sudo setenforce 1"}
+{"prompt": "Show AppArmor status.", "completion": "sudo apparmor_status"}
+{"prompt": "Load AppArmor profile.", "completion": "sudo apparmor_parser profile"}
+{"prompt": "Show current working directory in title bar.", "completion": "PROMPT_COMMAND='echo -ne \"\\033]0;${PWD##*/}\\007\"'"}
+{"prompt": "Show Git branch in prompt.", "completion": "PS1='[\\u@\\h \\W$(__git_ps1 \" (%s)\")]\\$ '"}
+{"prompt": "Make terminal prompt colorful.", "completion": "PS1='\\e[32m\\u@\\h:\\w\\$ \\e[0m'"}
+{"prompt": "Show disk partitions.", "completion": "lsblk"}
+{"prompt": "Show detailed partition table.", "completion": "sudo fdisk -l"}
+{"prompt": "Create new partition.", "completion": "sudo fdisk /dev/sda"}
+{"prompt": "Format partition as NTFS.", "completion": "sudo mkfs.ntfs /dev/sda1"}
+{"prompt": "Check and repair filesystem.", "completion": "sudo fsck -f /dev/sda1"}
+{"prompt": "Show UUID of partitions.", "completion": "blkid"}
+{"prompt": "Mount using UUID.", "completion": "sudo mount UUID=1234-5678 /mnt"}
+{"prompt": "Automatically mount at boot.", "completion": "sudo nano /etc/fstab"}
+{"prompt": "Show current I/O schedulers.", "completion": "cat /sys/block/sda/queue/scheduler"}
+{"prompt": "Change I/O scheduler to deadline.", "completion": "echo deadline | sudo tee /sys/block/sda/queue/scheduler"}
+{"prompt": "Show available entropy.", "completion": "cat /proc/sys/kernel/random/entropy_avail"}
+{"prompt": "Generate entropy (help stuck processes).", "completion": "find /usr -type f > /dev/null 2>&1 &"}
+{"prompt": "Show current kernel parameters.", "completion": "sysctl -a"}
+{"prompt": "Set maximum open files.", "completion": "sysctl -w fs.file-max=100000"}
+{"prompt": "Make sysctl change permanent.", "completion": "echo 'fs.file-max=100000' | sudo tee -a /etc/sysctl.d/custom.conf"}
+{"prompt": "Apply sysctl changes.", "completion": "sudo sysctl -p"}
+{"prompt": "Show TCP congestion control algorithm.", "completion": "sysctl net.ipv4.tcp_congestion_control"}
+{"prompt": "Set BBR congestion control.", "completion": "sysctl -w net.ipv4.tcp_congestion_control=bbr"}
+{"prompt": "Show current terminal size.", "completion": "stty size"}
+{"prompt": "Resize terminal to 80x24.", "completion": "stty rows 24 columns 80"}
+{"prompt": "Show current key bindings.", "completion": "bind -p"}
+{"prompt": "Create backup with timestamp.", "completion": "cp file.txt file.txt.$(date +%Y%m%d_%H%M%S).bak"}
+{"prompt": "Show only unique lines from file.", "completion": "sort file.txt | uniq"}
+{"prompt": "Show duplicate lines.", "completion": "sort file.txt | uniq -d"}
+{"prompt": "Count occurrences of each line.", "completion": "sort file.txt | uniq -c"}
+{"prompt": "Show most frequent words.", "completion": "tr ' ' '\\n' < file.txt | sort | uniq -c | sort -nr | head"}
+{"prompt": "Generate word list from text.", "completion": "tr -cs '[:alnum:]' '\\n' < file.txt | sort | uniq"}
+{"prompt": "Show current session uptime.", "completion": "uptime -p"}
+{"prompt": "Show system boot time.", "completion": "uptime -s"}
+{"prompt": "Show who is logged in (detailed).", "completion": "who -a"}
+{"prompt": "Show last reboot time.", "completion": "who -b"}
+{"prompt": "Show current load average.", "completion": "cat /proc/loadavg"}
+{"prompt": "Show number of CPU cores.", "completion": "nproc"}
+{"prompt": "Show CPU frequency.", "completion": "lscpu | grep MHz"}
+{"prompt": "Show memory details.", "completion": "cat /proc/meminfo"}
+{"prompt": "Show total installed RAM.", "completion": "free -h | awk '/Mem:/ {print $2}'"}
+{"prompt": "Show disk read/write stats.", "completion": "iostat -xz 1"}
+{"prompt": "Show network interface stats.", "completion": "sar -n DEV 1"}
+{"prompt": "Show historical system activity.", "completion": "sar"}
+{"prompt": "Start collecting system activity reports.", "completion": "sudo systemctl start sysstat"}
+{"prompt": "Show current date in ISO format.", "completion": "date -I"}
+{"prompt": "Show date in RFC 3339 format.", "completion": "date --rfc-3339=seconds"}
+{"prompt": "Convert timestamp to date.", "completion": "date -d @1700000000"}
+{"prompt": "Show time in UTC.", "completion": "date -u"}
+{"prompt": "Set system time from hardware clock.", "completion": "sudo hwclock --hctosys"}
+{"prompt": "Set hardware clock from system time.", "completion": "sudo hwclock --systohc"}
+{"prompt": "Show current locale settings.", "completion": "locale"}
+{"prompt": "Generate all locales.", "completion": "sudo locale-gen"}
+{"prompt": "Set system locale.", "completion": "sudo update-locale LANG=en_US.UTF-8"}
+{"prompt": "Show available shells.", "completion": "cat /etc/shells"}
+{"prompt": "Change user shell to zsh.", "completion": "chsh -s /usr/bin/zsh"}
+{"prompt": "Show current terminal type.", "completion": "echo $TERM"}
+{"prompt": "Set terminal to support 256 colors.", "completion": "export TERM=xterm-256color"}
+{"prompt": "Show current background jobs.", "completion": "jobs -l"}
+{"prompt": "Suspend current process.", "completion": "Ctrl+Z"}
+{"prompt": "List all signals.", "completion": "kill -l"}
+{"prompt": "Trap SIGINT (Ctrl+C).", "completion": "trap 'echo Caught SIGINT' INT"}
+{"prompt": "Run command immune to hangup.", "completion": "nohup command > output.log 2>&1 &"}
+{"prompt": "Detach process from terminal.", "completion": "setsid command"}
+{"prompt": "Create new tmux session.", "completion": "tmux new -s mysession"}
+{"prompt": "Attach to tmux session.", "completion": "tmux attach -t mysession"}
+{"prompt": "List tmux sessions.", "completion": "tmux ls"}
+{"prompt": "Detach from tmux.", "completion": "Ctrl+b d"}
+{"prompt": "Create new screen session.", "completion": "screen -S myscreen"}
+{"prompt": "Reattach to screen session.", "completion": "screen -r myscreen"}
+{"prompt": "List screen sessions.", "completion": "screen -ls"}
+{"prompt": "Show current IP address.", "completion": "ip route get 8.8.8.8 | awk '{print $7}'"}
+{"prompt": "Show public IP address.", "completion": "curl ifconfig.me"}
+{"prompt": "Show detailed public IP info.", "completion": "curl ipinfo.io"}
+{"prompt": "Speed test download.", "completion": "curl -o /dev/null http://speedtest.tele2.net/1GB.zip"}
+{"prompt": "Show MAC address.", "completion": "ip link show | grep ether"}
+{"prompt": "Change MAC address temporarily.", "completion": "sudo ip link set dev eth0 address 00:11:22:33:44:55"}
+{"prompt": "Bring network interface down.", "completion": "sudo ip link set eth0 down"}
+{"prompt": "Bring network interface up.", "completion": "sudo ip link set eth0 up"}
+{"prompt": "Show ARP table.", "completion": "arp -a"}
+{"prompt": "Delete ARP entry.", "completion": "sudo arp -d 192.168.1.100"}
+{"prompt": "Add static ARP entry.", "completion": "sudo arp -s 192.168.1.100 00:11:22:33:44:55"}
+{"prompt": "Show current DNS servers.", "completion": "cat /etc/resolv.conf"}
+{"prompt": "Flush local DNS cache.", "completion": "sudo systemd-resolve --flush-caches"}
+{"prompt": "Test connectivity to gateway.", "completion": "ping -c 3 $(ip route | grep default | awk '{print $3}')"}
+{"prompt": "Show all TCP connections.", "completion": "ss -at"}
+{"prompt": "Show all UDP connections.", "completion": "ss -au"}
+{"prompt": "Show sockets summary.", "completion": "ss -s"}
+{"prompt": "Show processes listening on port 80.", "completion": "sudo ss -ltnp sport = :80"}
+{"prompt": "Show established SSH connections.", "completion": "ss -tn state established '( dport = :22 or sport = :22 )'"}
+{"prompt": "Create new file with content.", "completion": "echo \"Hello World\" > newfile.txt"}
+{"prompt": "Append text to file.", "completion": "echo \"New line\" >> file.txt"}
+{"prompt": "Create multiple files at once.", "completion": "touch file{1..10}.txt"}
+{"prompt": "Create nested directories.", "completion": "mkdir -p /tmp/a/b/c/d/e"}
+{"prompt": "Remove non-empty directory without prompt.", "completion": "rm -rf /path/to/dir"}
+{"prompt": "Copy file with progress bar.", "completion": "rsync --progress source.txt dest.txt"}
+{"prompt": "Move and rename file.", "completion": "mv oldname.txt newname.txt"}
+{"prompt": "Find and replace text recursively.", "completion": "find . -type f -exec sed -i 's/old/new/g' {} +"}
+{"prompt": "Show only the first column of output.", "completion": "awk '{print $1}'"}
+{"prompt": "Show only the last column.", "completion": "awk '{print $NF}'"}
+{"prompt": "Show columns 2 to 5.", "completion": "awk '{print $2,$3,$4,$5}'"}
+{"prompt": "Sum all numbers in a file.", "completion": "awk '{sum+=$1} END {print sum}' numbers.txt"}
+{"prompt": "Show current user ID.", "completion": "id -u"}
+{"prompt": "Show current group ID.", "completion": "id -g"}
+{"prompt": "Show all groups user belongs to.", "completion": "groups"}
+{"prompt": "Show process hierarchy.", "completion": "ps -ejH"}
+{"prompt": "Show processes in forest view.", "completion": "ps axjf"}
+{"prompt": "Show threads of a process.", "completion": "ps -T -p <pid>"}
+{"prompt": "Show security limits of process.", "completion": "cat /proc/<pid>/limits"}
+{"prompt": "Show open files by process.", "completion": "lsof -p <pid>"}
+{"prompt": "Show environment variables of process.", "completion": "cat /proc/<pid>/environ | tr '\\0' '\\n'"}
+{"prompt": "Show current working directory of process.", "completion": "pwdx <pid>"}
+{"prompt": "Show memory map of process.", "completion": "pmap <pid>"}
+{"prompt": "Show stack trace of running process.", "completion": "gdb -p <pid>"}
+{"prompt": "Attach strace to running process.", "completion": "sudo strace -p <pid>"}
+{"prompt": "Show system calls of a command.", "completion": "strace command"}
+{"prompt": "Show network activity of process.", "completion": "sudo nethogs"}
+{"prompt": "Show bandwidth usage per process.", "completion": "sudo iftop"}
+{"prompt": "Show real-time network traffic.", "completion": "iftop -i eth0"}
+{"prompt": "Show disk activity by process.", "completion": "iotop -o"}
+{"prompt": "Show CPU usage per core.", "completion": "mpstat -P ALL"}
+{"prompt": "Show per-process network usage.", "completion": "nethogs eth0"}
+{"prompt": "Show current session processes.", "completion": "ps -u $USER"}
+{"prompt": "Show processes using most memory.", "completion": "ps aux --sort=-%mem | head"}
+{"prompt": "Show zombie processes.", "completion": "ps aux | awk '{ print $8 \" \" $2 }' | grep -w Z"}
+{"prompt": "Show orphaned processes.", "completion": "ps -eo ppid= | sort | uniq -c | grep -v ' 1 '"}
+{"prompt": "Show processes older than 1 day.", "completion": "ps -eo pid,etime,cmd | grep 'd-'"}
+{"prompt": "Show current terminal devices.", "completion": "tty"}
+{"prompt": "Send message to all users.", "completion": "echo \"System will reboot\" | wall"}
+{"prompt": "Write message to user's terminal.", "completion": "echo \"Hello\" | write username pts/0"}
+{"prompt": "Show who is on which terminal.", "completion": "who"}
+{"prompt": "Disable user logins temporarily.", "completion": "sudo touch /etc/nologin"}
+{"prompt": "Enable logins again.", "completion": "sudo rm /etc/nologin"}
+{"prompt": "Show current runlevel (legacy).", "completion": "runlevel"}
+{"prompt": "Show default systemd target.", "completion": "systemctl get-default"}
+{"prompt": "Boot into rescue mode.", "completion": "sudo systemctl rescue"}
+{"prompt": "Reboot to firmware (BIOS/UEFI).", "completion": "sudo systemctl reboot --firmware-setup"}
+{"prompt": "Show boot messages.", "completion": "journalctl -b"}
+{"prompt": "Show previous boot logs.", "completion": "journalctl -b -1"}
+{"prompt": "Show kernel ring buffer.", "completion": "dmesg -H"}
+{"prompt": "Clear dmesg buffer (requires root).", "completion": "sudo dmesg --clear"}
+{"prompt": "Show only error messages from dmesg.", "completion": "dmesg --level=err"}
+{"prompt": "Follow new dmesg entries.", "completion": "dmesg -w"}
+{"prompt": "Show current console font.", "completion": "setfont"}
+{"prompt": "Change console font.", "completion": "sudo setfont Lat38-TerminusBold20x10"}
+{"prompt": "Show current keymap.", "completion": "loadkeys -s"}
+{"prompt": "Change keyboard layout.", "completion": "sudo loadkeys de"}
+{"prompt": "Show current screen blanking timeout.", "completion": "cat /sys/module/kernel/parameters/consoleblank"}
+{"prompt": "Disable screen blanking.", "completion": "setterm -blank 0"}
+{"prompt": "Turn off monitor immediately.", "completion": "sleep 0.1; xset dpms force off"}
+{"prompt": "Show current power supply status.", "completion": "cat /sys/class/power_supply/BAT0/status"}
+{"prompt": "Show battery capacity.", "completion": "cat /sys/class/power_supply/BAT0/capacity"}
+{"prompt": "Show battery technology.", "completion": "cat /sys/class/power_supply/BAT0/technology"}
+{"prompt": "Show AC adapter status.", "completion": "cat /sys/class/power_supply/AC/online"}
+{"prompt": "Show current brightness.", "completion": "cat /sys/class/backlight/intel_backlight/brightness"}
+{"prompt": "Set maximum brightness.", "completion": "echo 1000 | sudo tee /sys/class/backlight/intel_backlight/brightness"}
+{"prompt": "Show current volume (ALSA).", "completion": "amixer get Master"}
+{"prompt": "Set volume to 80%.", "completion": "amixer set Master 80%"}
+{"prompt": "Mute sound.", "completion": "amixer set Master mute"}
+{"prompt": "Unmute sound.", "completion": "amixer set Master unmute"}
+{"prompt": "Show current audio output device.", "completion": "pactl list sinks short"}
+{"prompt": "Set default audio sink.", "completion": "pactl set-default-sink <sink-name>"}
+{"prompt": "Show current webcam device.", "completion": "ls /dev/video*"}
+{"prompt": "Test webcam.", "completion": "ffplay /dev/video0"}
+{"prompt": "Show USB webcam info.", "completion": "lsusb | grep -i camera"}
+{"prompt": "Show current printer queue.", "completion": "lpq"}
+{"prompt": "Print a file.", "completion": "lpr document.pdf"}
+{"prompt": "Cancel print job.", "completion": "lprm <job-id>"}
+{"prompt": "Show available printers.", "completion": "lpstat -p"}
+{"prompt": "Show current desktop environment.", "completion": "echo $XDG_CURRENT_DESKTOP"}
+{"prompt": "Show window manager.", "completion": "wmctrl -m"}
+{"prompt": "Take screenshot with delay.", "completion": "scrot -d 5 screenshot.png"}
+{"prompt": "Record screen with sound.", "completion": "ffmpeg -f x11grab -i :0.0 -f alsa -i default output.mkv"}
+{"prompt": "Show current X display.", "completion": "echo $DISPLAY"}
+{"prompt": "Run GUI app as another user.", "completion": "sudo -u username DISPLAY=:0 firefox"}
+{"prompt": "Show current clipboard content.", "completion": "xclip -o -selection clipboard"}
+{"prompt": "Copy text to clipboard.", "completion": "echo \"text\" | xclip -selection clipboard"}
+{"prompt": "Show current mouse position.", "completion": "xdotool getmouselocation"}
+{"prompt": "Move mouse to coordinates.", "completion": "xdotool mousemove 100 200"}
+{"prompt": "Simulate left click.", "completion": "xdotool click 1"}
+{"prompt": "Type text using xdotool.", "completion": "xdotool type \"Hello World\""}
+{"prompt": "Show current screen resolution.", "completion": "xrandr | grep '*'"}
